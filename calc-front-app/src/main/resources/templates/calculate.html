@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Perry Calculate Spring boot MVC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form th:action="@{/calculate}" method="POST">
+		<p><strong>Calculate numbers</strong></p>
+		<p>1st num: <input type="text" name="num1" /></p> 
+		<p>2nd num: <input type="text" name="num2" /></p>    
+	    <p th:text="'Add: ' + ${add}" />
+	    <p th:text="'Subtract: ' + ${sub}" />
+	    <button name="calculatebtn" type="Submit" th:text="Calculate"></button>
+	</form>
+</body>
+</html>
+	    
