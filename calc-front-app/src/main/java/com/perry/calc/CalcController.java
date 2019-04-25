@@ -26,8 +26,12 @@ public class CalcController {
 	public String calculate(Model model, @RequestParam(name = "num1") String num1,
 			@RequestParam(name = "num2") String num2) throws Exception {
 
-		String addService = "http://calculator-add-env.us-east-2.elasticbeanstalk.com/" + num1 + "/" + num2;
+//		String addService = "http://calculator-add-env.us-east-2.elasticbeanstalk.com/" + num1 + "/" + num2;
+//		String subService = "http://calculator-sub-env.us-east-2.elasticbeanstalk.com/" + num1 + "/" + num2;
+
+		String addService = "http://localhost:8084/" + num1 + "/" + num2;
 		String subService = "http://calculator-sub-env.us-east-2.elasticbeanstalk.com/" + num1 + "/" + num2;
+
 		String addResponse = "";
 		String subResponse = "";
 
@@ -37,16 +41,15 @@ public class CalcController {
 			HttpURLConnection requestAdd = (HttpURLConnection) url.openConnection();
 			requestAdd.connect();
 
-			BufferedReader streamReader = new BufferedReader(
-					new InputStreamReader((InputStream) requestAdd.getContent()));
+			BufferedReader streamReader = new BufferedReader(new InputStreamReader((InputStream) requestAdd.getContent()));
 			addResponse = streamReader.readLine();
 
 			// Subtract
-			url = new URL(subService);
-			HttpURLConnection requestSub = (HttpURLConnection) url.openConnection();
-			requestSub.connect();
-			streamReader = new BufferedReader(new InputStreamReader((InputStream) requestSub.getContent()));
-			subResponse = streamReader.readLine();
+//			url = new URL(subService);
+//			HttpURLConnection requestSub = (HttpURLConnection) url.openConnection();
+//			requestSub.connect();
+//			streamReader = new BufferedReader(new InputStreamReader((InputStream) requestSub.getContent()));
+//			subResponse = streamReader.readLine();
 		}
 		model.addAttribute("add", addResponse);
 		model.addAttribute("sub", subResponse);
